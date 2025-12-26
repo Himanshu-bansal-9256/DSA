@@ -4,26 +4,48 @@ using namespace std;
 
 void search(int matrix[][100], int n, int m, int target)
 {
-    for(int  i = 0 ;i < n ; i++){
-        if(matrix[i][0] <= target && matrix[i][m-1]>=target){
-            //apply binary search in this row
-            int start = 0 ; int end = m-1;
-            while(start<=end){
-                int mid = start + (end - start)/2;
-                if(matrix[i][mid] == target){
-                    cout<<"Found at index: "<<i<<","<<mid<<endl;
-                    return;
-                }
-                else if(matrix[i][mid] < target){
-                    start = mid + 1;
-                }
-                else{
-                    end = mid - 1;
-                }
+    // for(int  i = 0 ;i < n ; i++){
+    //     if(matrix[i][0] <= target && matrix[i][m-1]>=target){
+    //         //apply binary search in this row
+    //         int start = 0 ; int end = m-1;
+    //         while(start<=end){
+    //             int mid = start + (end - start)/2;
+    //             if(matrix[i][mid] == target){
+    //                 cout<<"Found at index: "<<i<<","<<mid<<endl;
+    //                 return;
+    //             }
+    //             else if(matrix[i][mid] < target){
+    //                 start = mid + 1;
+    //             }
+    //             else{
+    //                 end = mid - 1;
+    //             }
+    //         }
+    //     }
+    // }
+    // cout<<"Not Found"<<endl;
+
+    // time complexity is O(n+log m);
+    // and space complexity is O(1);
+
+    int start = 0, end = m*n - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int row_index = mid / m;
+            int col_index = mid % m;
+            if (matrix[row_index][col_index] == target) {
+                cout << "Found at index: " << row_index << "," << col_index << endl;
+                return;
+            } else if (matrix[row_index][col_index] < target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
             }
         }
-    }
-    cout<<"Not Found"<<endl;
+        cout << "Not Found" << endl;
+
+        // time complexity is O(log (n*m));
+        // space complexity is O(1);
 }
 
 int main()
