@@ -12,42 +12,30 @@ public:
         next = NULL;
     }
 };
-
 int main()
 {
-    Node *Head = NULL;
+    Node *Head;
+    Head = NULL;
 
     int arr[] = {10, 20, 30, 40, 50};
 
-    Head = new Node(arr[0]);
-    Node *temp = Head;
-    for (int i = 1; i < 5; i++)
-    {
-        temp->next = new Node(arr[i]);
-        temp = temp->next;
-    }
-
     // insert the node at particular position
-    int x = 3;       // insert position
+    int x = 3;       // insrt postion
     int value = 100; // value to be inserted
-
-    temp = Head;
-    x--; // because head already at position 1
-
+    Node *temp = Head;
+    x--;
     while (x--)
     {
         temp = temp->next;
     }
-
-    Node *temp2 = new Node(value);  
+    node *temp2 = new Node(value);
     temp2->next = temp->next;
     temp->next = temp2;
-
-    // print the linked list
-    temp = Head;
+    // print the ll
+    Node *temp = Head;
     while (temp != NULL)
     {
         cout << temp->data << " ";
         temp = temp->next;
-    }
+    };
 }
