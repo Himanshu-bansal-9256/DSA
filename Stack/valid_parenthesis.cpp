@@ -2,21 +2,39 @@
 #include <stack>
 using namespace std;
 
-// bool check(string str){
-//     stack<char>st;
-//     for(int i = 0 ; i< str.size(); i++){
-//         if(st.empty()){
-//             st.push(str[i]);
-//         }
-//         else{
-//             if(st.empty()) return false;
-//             else{
-//                 st.pop();
-//             }
-//         }
-//     }
-//     return st.empty();
-// }
+// 1st method
+bool isValid(string s) {
+        stack<char> st;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
+                st.push(s[i]);
+            } else {
+                if (st.empty()) {
+                    return false;
+                } else if (s[i] == ')') {
+                    if (st.top() != '(')
+                        return false;
+                    else {
+                        st.pop();
+                    }
+                } else if (s[i] == ']') {
+                    if (st.top() != '[')
+                        return false;
+                    else {
+                        st.pop();
+                    }
+                } else if (s[i] == '}') {
+                    if (st.top() != '{')
+                        return false;
+                    else {
+                        st.pop();
+                    }
+                }
+            }
+
+        }
+        return st.empty();
+}
 
 // 2nd method 
 
@@ -38,7 +56,8 @@ bool check(string str){
 int main()
 {
     // check for valid parenthesis using stack
-    string str = "((())))";
+    string str = "{}[]]()";
+    cout<<isValid(str)<<endl;
     cout<<check(str)<<endl;
     return 0;
 }
