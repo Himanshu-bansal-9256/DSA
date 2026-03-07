@@ -58,15 +58,15 @@ int main(){
     // tree creation code 
 
     // preorder print 
-    cout<<"\n Pre Order ";
+    cout<<"\nPre Order ";
     PreOrder(root);
 
     // inorder print
-    cout<<"\n In Order";
+    cout<<"\nIn Order";
     InOrder(root);
 
     // postorder print
-    cout<<"\n Post Order";
+    cout<<"\nPost Order";
     PostOrder(root);
 
     
