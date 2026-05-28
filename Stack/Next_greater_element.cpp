@@ -32,14 +32,35 @@ int main()
     vector<int> arr = {4, 5, 2, 25};
     vector<int> ans(arr.size(), -1);
     stack<int> st;
-    for(int i = 0  ; i < arr.size() ; i++){
-        while(!st.empty() && arr[st.top()] < arr[i]){
-            ans[st.top()] = arr[i];
+    // for(int i = 0  ; i < arr.size() ; i++){
+    //     while(!st.empty() && arr[st.top()] < arr[i]){
+    //         ans[st.top()] = arr[i];
+    //         st.pop();
+    //     }
+    //     st.push(i);
+    // }
+    
+    // for(int i = 0; i < ans.size(); i++){
+    //     cout << ans[i] << " ";
+    // }
+    // cout << endl;
+
+    // return 0;
+
+
+    // 3rd method 
+    for(int i = arr.size() - 1  ; i >= 0 ; i--){
+        while(!st.empty() && arr[st.top()] <= arr[i]){
             st.pop();
+        }
+        if(!st.empty()){
+            ans[i] = arr[st.top()];
+        }
+        else{
+            ans[i] = -1;
         }
         st.push(i);
     }
-    
     for(int i = 0; i < ans.size(); i++){
         cout << ans[i] << " ";
     }
