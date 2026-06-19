@@ -12,6 +12,7 @@ class Node{
     }
 };
 
+// method 1 : using level order traversal
 // class Solution{
 // public:
 //     vector<int> rightView(Node* root){
@@ -47,8 +48,8 @@ class Node{
 //         return ans;
 //     }
 // };
-// method 2 : using recursion
 
+// method 2 : using recursion
 class Solution {
     void Rview(Node*root , int level , vector<int>&ans){
         if(!root){
